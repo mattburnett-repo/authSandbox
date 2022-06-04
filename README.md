@@ -4,6 +4,8 @@ This is an isolated environment to facilitate experimentation with / further lea
 
 It is a simple Node / Express server that renders UI from PUG files. There is nothing fancy to look at, and this is on purpose.
 
+Users can register a new account.
+
 Users can log in in two different ways:
 * Basic Authentication (username / password)
 * OAuth
