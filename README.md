@@ -16,13 +16,17 @@ A MongoDB / Mongoose database is used to persist authentication / session info. 
 
 ## Technologies Used
 * Node / Express
-* Express flash messaging
+  * bcrypt
+  * Express flash messaging
+  
 * MongoDB / Mongoose / mongoose-find-or-create
 * Typescript
 * PUG
 * Passport JS
   * Basic authentication
   * OAuth
+    * Google
+    * GitHub
   * JWT
   
 ## Getting Started
