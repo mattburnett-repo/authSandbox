@@ -14,6 +14,7 @@ A MongoDB / Mongoose database is used to persist authentication / session info. 
 
 ## Technologies Used
 * Node / Express
+* Express flash messaging
 * MongoDB / Mongoose / mongoose-find-or-create
 * Typescript
 * PUG
@@ -72,4 +73,5 @@ You should then see a Log In screen.
 ## To Do
 * More Typescript
 * Implement auth0 / JWT functionality
+* Dockerize and deploy
 * Tests?
