@@ -1,0 +1,48 @@
+//- W3hubs.com - Download Free Responsive Website Layout Templates designed on HTML5 CSS3,Bootstrap,Tailwind CSS which are 100% Mobile friendly. w3Hubs all Layouts are responsive cross browser supported, best quality world class designs.
+doctype html
+html(lang="en")
+  head
+    title Auth Sandbox
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='./style.css')
+    script.  
+      function handleLoginClick() {
+        console.log('login click')
+      } 
+      function handleGoogleOAuth() {
+        window.location = "auth/oauth/google"
+      }
+      function handleGitHubOAuth() {
+        window.location = "auth/oauth/github"
+      }
+      function handleSignUpClick() {
+        window.location = "auth/register"
+      }
+  body
+    #main
+      //- form(action="/auth/basic/login" method="POST")
+      form(action="/auth/basic/login/passport" method="POST")
+        div.label Auth Sandbox Login Form
+        if error 
+          div.flash-message.error
+            p= error
+        if success 
+          div.flash-message.success 
+            p= success
+        div.username
+          input(type="text" name="username" placeholder="username")
+        div.password
+          input(type="password" name="password" placeholder="password")
+        div.checkbox
+          input(type='checkbox' name='agreement' checked)
+          |Remember me
+        button(type="submit") Login
+        h3 or login with
+        div.social
+          button(type="button" onclick="handleGoogleOAuth()") <i class="fa fa-google"></i>
+          button(type="button" onclick="handleGitHubOAuth()") <i class="fa fa-github"></i>  
+        h4 Don't have an account?
+        button(type="button" onclick="handleSignUpClick()") Sign Up now

@@ -1,0 +1,14 @@
+
+- just for auth testings
+
+- with and without Passport
+- mongo db
+- OAuth
+- JWT
+    - Authorization and authentication (roles)
+- Basic
+- "Keep me logged in"
+    - localStorage / sessions / cookies
+- Auth0
+
+- Multi factor authentication
