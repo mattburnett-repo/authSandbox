@@ -86,10 +86,12 @@ You should then see a Log In screen.
 * JWT
   * For authorization / role / access level
   
-## To Do
-* Resolve simultaneous OAuth2 authentication issue
+## Known Issues
+* Ssimultaneous OAuth2 authentication issue
   * Use Google, logout and the use GitHub
-    * still logs in with google
+    * still logs in with Google
+  
+## To Do
 * Use MongoDB on Atlas, not locally
 * More Typescript
 * Research / implement auth0
@@ -97,4 +99,3 @@ You should then see a Log In screen.
   * Netlify, et al.
   * Microservice / AWS
   * NPM package
-* Tests?
