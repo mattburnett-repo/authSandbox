@@ -20,7 +20,7 @@ html(lang="en")
         div.app-surface-content
             p.bold response.user._id: 
             p= response.user._id
-            p.bold response.user.accessLevel:
+            p.bold response.user.accessLevel (possible values are user / editor / admin. Change these in db/model/user.model.ts):
             p= response.user.accessLevel
             p.bold response.message:
             p= response.message

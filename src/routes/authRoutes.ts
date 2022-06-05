@@ -40,7 +40,7 @@ module.exports = (app: any) => {
             //      and use it in an 'Authorization: Bearer your.token.here' header, in your app.
             res.render('app-surface', {    
                 response: {
-                    message: 'This is where the application appears. This is the surface area of the application.', 
+                    message: 'This is where the application appears. This is the surface area / entry point of the application.', 
                     authToken: req.cookies.authToken, 
                     user: req.user
                 }})

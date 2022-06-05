@@ -1,12 +1,10 @@
 
 const expressLoader = require('./expressLoader.ts')
-// const { initializePassport } = require('./passportLoader');
 const routeLoader = require('../routes/index.ts')
 
 module.exports = async ( app: any ) => {
     await expressLoader(app)
-    // await initializePassport(app)
-    await routeLoader(app);
+    await routeLoader(app)
 
     // Error Handler
     app.use((err: Error, req: Request, res: any, next: any) => {

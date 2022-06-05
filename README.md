@@ -6,7 +6,7 @@ It is a simple Node / Express server that renders UI from PUG files. There is no
 
 The code handles signing up, logging in and logging out. That's it. 
 
-Once a user has registered / logged in, the code presents an endpoint called 'app-surface'. 'app-surface' is intended to be the entry / starting point of your application's code.
+Once a user has registered / logged in, the code presents an endpoint called 'app-surface'. 'app-surface' is intended to be the entry / starting point of your application's code. This endpoint is in /src/routes/authRoutes.ts
 
 'app-surface' receives a JWT authToken via a cookie. You should probably take this token and use it in an 'Authorization: Bearer your.token.here' header, in your app.
 
