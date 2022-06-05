@@ -4,7 +4,11 @@ This is an isolated environment to facilitate experimentation with / further lea
 
 It is a simple Node / Express server that renders UI from PUG files. There is nothing fancy to look at; this is on purpose.
 
-The code handles logging in. Once a user has registered / logged in, the code presents a endpoint called 'app-surface'. 'app-surface' is intended to be the entry / starting point of your application's code.
+The code handles signing up, logging in and logging out. That's it. 
+
+Once a user has registered / logged in, the code presents an endpoint called 'app-surface'. 'app-surface' is intended to be the entry / starting point of your application's code.
+
+'app-surface' receives a JWT authToken via a cookie. You should probably take this token and use it in an 'Authorization: Bearer your.token.here' header, in your app.
 
 Users can register a new account.
 

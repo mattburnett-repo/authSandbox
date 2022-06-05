@@ -6,7 +6,7 @@ var passport = require("passport")
 var { oauthGoogle, oauthGithub } = require('../loaders/passportLoader')
 var jwt = require('jsonwebtoken')
 
-// var { generateJwtAndCookie } = require('../util/functions')
+var { generateJwtAndCookie } = require('../util/functions')
 
 module.exports = (app: any) => {
     oauthGoogle()
@@ -24,24 +24,8 @@ module.exports = (app: any) => {
             failureRedirect: '/error' 
         }),
         (req: any, res: any) => {
-            // FIXME: replace this with a function or something...
-            // generateJwtAndCookie(req, res)
-            const token = jwt.sign(
-                { 
-                    _id: req.user._id, 
-                    username: req.user.username,
-                }, 
-                process.env.JWT_TOKEN_SECRET)
-
-            // ... and send back to caller
-            res.cookie('authToken', token, 
-                { 
-                    httpOnly: true, 
-                    sameSite: 'None', 
-                    secure: true, 
-                    maxAge: 5 * 60 * 1000 
-                })           
-            
+            generateJwtAndCookie(req, res)
+                   
             res.redirect('/auth/app-surface')
         }
     )
@@ -54,19 +38,8 @@ module.exports = (app: any) => {
             failureRedirect: '/error' 
         }),
         (req: any, res: any) => {
-            // FIXME: replace this with a function or something...
-            // generateJwtAndCookie(req, res)
-            const token = jwt.sign({ _id: req.user._id, username: req.user.username }, process.env.JWT_TOKEN_SECRET)
-
-            // ... and send back to caller
-            res.cookie('authToken', token, 
-                { 
-                    httpOnly: true, 
-                    sameSite: 'None', 
-                    secure: true, 
-                    maxAge: 5 * 60 * 1000 
-                })           
-                        
+            generateJwtAndCookie(req, res)
+                             
             res.redirect('/auth/app-surface')
     })
 } // end module.exports

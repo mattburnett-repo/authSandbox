@@ -24,13 +24,13 @@ const generateJwtAndCookie = (req, res) => {
     // generate jwt ...
     const token = jwt.sign({ _id: req.user._id, username: req.user.username }, process.env.JWT_TOKEN_SECRET)
 
-    // ... and send back to caller
+    // ... and attach to response object
     res.cookie('authToken', token, 
         { 
             httpOnly: true, 
             sameSite: 'None', 
             secure: true, 
-            maxAge: 5 * 60 * 1000 
+            maxAge: process.env.COOKIE_MAX_AGE 
         })
 }
 

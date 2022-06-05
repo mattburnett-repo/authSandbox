@@ -7,6 +7,7 @@ var User = require('../../db/model/user.model')
 var passport = require("passport")
 var { basicLocal }  = require('../loaders/passportLoader')
 var jwt = require('jsonwebtoken')
+var { generateJwtAndCookie } = require('../util/functions')
 
 module.exports = (app: any) => {
     basicLocal()
@@ -54,20 +55,8 @@ module.exports = (app: any) => {
             failureFlash: true
         }),
         (req: any, res: any, next: Function) => {
-            // FIXME: replace this with a function or something...
-            // generateJwtAndCookie(req, res)
+            generateJwtAndCookie(req, res)
 
-            // generate jwt ...
-            const token = jwt.sign({ _id: req.user._id, username: req.user.username }, process.env.JWT_TOKEN_SECRET)
-
-            // ... and send back to caller
-            res.cookie('authToken', token, 
-                { 
-                    httpOnly: true, 
-                    sameSite: 'None', 
-                    secure: true, 
-                    maxAge: 5 * 60 * 1000 
-                })
             res.redirect('/auth/app-surface')
         }
     )

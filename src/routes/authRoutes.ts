@@ -36,6 +36,8 @@ module.exports = (app: any) => {
         }),
         async (req: any, res: any) => {
             // this is where your app begins. you can replace this code to plug in your app's entrypoint here.
+            // 'app-surface' receives a JWT authToken via a cookie. You should probably take this token 
+            //      and use it in an 'Authorization: Bearer your.token.here' header, in your app.
             res.render('app-surface', {    
                 response: {
                     message: 'This is where the application appears. This is the surface area of the application.', 
