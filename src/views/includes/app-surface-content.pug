@@ -1,0 +1,9 @@
+div.app-surface-content
+    p.bold user._id: 
+    p= user._id
+    p.bold authToken: 
+    p= authToken
+    p.bold user.accessLevel (possible values are user / editor / admin. Change these in db/model/user.model.ts):
+    p= user.accessLevel
+    p.bold message:
+    p= message

@@ -30,7 +30,7 @@ const generateJwtAndCookie = (req, res) => {
             httpOnly: true, 
             sameSite: 'None', 
             secure: true, 
-            maxAge: process.env.COOKIE_MAX_AGE 
+            maxAge: Number(process.env.COOKIE_MAX_AGE)
         })
 }
 

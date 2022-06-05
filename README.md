@@ -18,13 +18,17 @@ Users can log in in two different ways:
   * Google
   * GitHub
 
-A MongoDB / Mongoose database is used to persist authentication / session info. You can use a different database if you want to, but you will need to change code in the routes.
+A MongoDB / Mongoose database is used to save user info, and to persist authentication / session info. You can use a different database if you want to, but you will need to change code in the routes.
 
 ## Technologies Used
 * Node / Express
   * bcrypt
-  * Express flash messaging
-* MongoDB / Mongoose / mongoose-find-or-create
+  * express-session
+  * express flash messaging
+  * jsonwebtoken
+* MongoDB / Mongoose 
+  * connect-mongo
+  * mongoose-find-or-create
 * Typescript
 * PUG
 * Passport JS
@@ -41,7 +45,7 @@ npm install
 ```
 You will need environment vars
 ```bash
-AUTH_PORT=4000
+AUTH_PORT=something.like.4000
 SESSION_SECRET=put.your.session.secret.string.here
 MONGO_CONNECTION_STRING=put.your.mongo.connection.string.here (eg: mongodb://localhost:27017)
 AUTH_DATABASE_NAME=authSandbox
@@ -61,7 +65,7 @@ Run the server
 ```bash
 npm run dev
 ```
-If you need to recompile static PUG files (src/views/static/login.pug, register.pug), run (from project root)
+If you need to recompile static PUG files (src/views/static/), run (from project root)
 ```bash
 npm run build:pug
 ```
@@ -83,16 +87,15 @@ You should then see a Log In screen.
   * For authorization / role / access level
   
 ## To Do
-* Resolve simultaneous OAuth2 authentication puzzle
+* Add 'remember me' functionalty (https://www.zacfukuda.com/blog/passport-hashing-remember)
+* Resolve simultaneous OAuth2 authentication issue
   * Use Google, logout and the use GitHub
     * still logs in with google
-* PUG
-  * modularize the duplicate bits of the templates
-    * I think they're called mixins, or something like that
 * Use MongoDB on Atlas, not locally
 * More Typescript
 * Research / implement auth0
 * Dockerize / Deploy
+  * Netlify, et al.
   * Microservice / AWS
   * NPM package
 * Tests?

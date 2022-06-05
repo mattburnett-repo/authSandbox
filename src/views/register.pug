@@ -2,34 +2,22 @@
 doctype html
 html(lang="en")
   head
-    title Auth Sandbox - Register
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='../../../style.css')
+    include mixins/head.pug
+    +head('Auth Sandbox - Register')
+    link(rel='stylesheet', href='../style.css')
+
+    include includes/script.pug
+    include mixins/header.pug
+    include mixins/submit-button.pug
+    include mixins/have-account.pug
   body
-    script.  
-        function handleLoginClick() {
-          window.location = "/"
-        } 
     #main
      form(action="/auth/basic/register" method="POST")
-        div.label Auth Sandbox Registration Form
-          if error.length
-            div.flash-message.error
-              p= error
-          if success.length   
-            div.flash-message.success 
-              p= success 
-        div.username
-          input(type="text" name="username" placeholder="username")
-        div.password
-          input(type="new-password" name="password" placeholder="password")
-        div.password
-          input(type="new-password" name="password-confirm" placeholder="password confirmation")
-        div.checkbox
-          input(type='checkbox' name='agreement' checked)
-          |Remember me
-        button(type="submit") Sign Up
-        hr
-        h4.black Already have an account?
-          button(type="button" onclick="handleLoginClick()") Log In now
+        +header('Auth Sandbox Registration Form')
+        include includes/flash-messages.pug
+        include includes/username-password.pug
+        include includes/password-confirm.pug
+        include includes/remember-me.pug
+        +submit-button('Sign Up')
+        +have-account('Already have an account?')
+        button(type="button" onclick="handleLoginClick()") Log In now

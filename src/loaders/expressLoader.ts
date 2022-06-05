@@ -39,7 +39,7 @@ module.exports = (app: any) => {
       //      not sure we are even using Mongostore / sessions, now that jwt is implemented
       //  also disabled 'sameSite' because it was also interfering with express-flash-messages
       cookie: { 
-        maxAge: process.env.COOKIE_MAX_AGE  // time before cookie expires / mongo datastore removes session
+        maxAge: Number(process.env.COOKIE_MAX_AGE)  // time before cookie expires / mongo datastore removes session
         // secure: true, 
         // sameSite: 'none'
       }, 

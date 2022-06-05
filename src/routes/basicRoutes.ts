@@ -29,7 +29,7 @@ module.exports = (app: any) => {
                 req.login(user, function (err: Error) {
                     if (!err){
                         // 307 lets us redirect to the route in the codw below this one, as POST and not the default GET
-                        //      this logs new user in, generates a JWT and redirects to the app-surface enpoint
+                        //      this logs new user in, generates a JWT and redirects to the app-surface endpoint
                         res.redirect(307, '/auth/basic/login/passport')
                     } else {
                         let message = req.flash('error', err)

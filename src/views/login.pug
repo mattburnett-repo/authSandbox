@@ -2,47 +2,22 @@
 doctype html
 html(lang="en")
   head
-    title Auth Sandbox
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    include mixins/head.pug
+    +head('Auth Sandbox')
     link(rel='stylesheet', href='./style.css')
-    script.  
-      function handleLoginClick() {
-        console.log('login click')
-      } 
-      function handleGoogleOAuth() {
-        window.location = "auth/oauth/google"
-      }
-      function handleGitHubOAuth() {
-        window.location = "auth/oauth/github"
-      }
-      function handleSignUpClick() {
-        window.location = "auth/register"
-      }
+    
+    include includes/script.pug
+    include mixins/header.pug
+    include mixins/submit-button.pug
+    include mixins/have-account.pug
   body
     #main
       form(action="/auth/basic/login/passport" method="POST")
-        div.label Auth Sandbox Login Form
-        if error.length
-          div.flash-message.error
-            p= error
-        if success.length
-          div.flash-message.success 
-            p= success
-        div.username
-          input(type="text" name="username" placeholder="username")
-        div.password
-          input(type="password" name="password" placeholder="password")
-        div.checkbox
-          input(type='checkbox' name='agreement' checked)
-          |Remember me
-        button(type="submit") Login
-        h3 or login with
-        div.social
-          button(type="button" onclick="handleGoogleOAuth()") <i class="fa fa-google"></i>
-          button(type="button" onclick="handleGitHubOAuth()") <i class="fa fa-github"></i>  
-        hr
-        h4.black Don't have an account?
+        +header('Auth Sandbox Login Form')
+        include includes/flash-messages.pug
+        include includes/username-password.pug
+        include includes/remember-me.pug
+        +submit-button('Log In')
+        include includes/oauth-links.pug
+        +have-account('Don\'t have an account?')
         button(type="button" onclick="handleSignUpClick()") Sign Up now
