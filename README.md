@@ -92,7 +92,6 @@ You should then see a Log In screen.
     * still logs in with Google
   
 ## To Do
-* Use MongoDB on Atlas, not locally
 * More Typescript
 * Research / implement auth0
 * Dockerize / Deploy
