@@ -10,8 +10,6 @@ module.exports = (app: any) => {
 
     // nail down root / index / login endpoint independent of other routes
     //  app.get, not router.get
-    // TODO: remember me functionality
-    //      https://www.zacfukuda.com/blog/passport-hashing-remember
     app.get('/', async (req: any, res: any) => {
         const success = await req.consumeFlash('success')
         const error = await req.consumeFlash('error')

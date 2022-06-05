@@ -2,23 +2,23 @@
 var jwt = require('jsonwebtoken')
 
 //  https://www.geeksforgeeks.org/basic-authentication-in-node-js-using-http-header/
-const basicAuthFunction = (req, res, next) => {
-    var authheader = req.headers.authorization
+// const basicAuthFunction = (req, res, next) => {
+//     var authheader = req.headers.authorization
     
 
-    if (!authheader) {
-    //     var err = new Error('You are not authenticated!');
-    //     res.setHeader('WWW-Authenticate', 'Basic');
-    //     err.status = 401;
-    //     return next(err)
-    // }
-    } else {
-        console.log('basicAuthFunction ', req.headers)
-        res.render('response', {response: req.headers})
-    }
+//     if (!authheader) {
+//     //     var err = new Error('You are not authenticated!');
+//     //     res.setHeader('WWW-Authenticate', 'Basic');
+//     //     err.status = 401;
+//     //     return next(err)
+//     // }
+//     } else {
+//         console.log('basicAuthFunction ', req.headers)
+//         res.render('response', {response: req.headers})
+//     }
 
-    next()
-}
+//     next()
+// }
 
 const generateJwtAndCookie = (req, res) => {
     // generate jwt ...
@@ -35,6 +35,6 @@ const generateJwtAndCookie = (req, res) => {
 }
 
 module.exports = {
-    basicAuthFunction,
+    // basicAuthFunction,
     generateJwtAndCookie
 }

@@ -87,7 +87,6 @@ You should then see a Log In screen.
   * For authorization / role / access level
   
 ## To Do
-* Add 'remember me' functionalty (https://www.zacfukuda.com/blog/passport-hashing-remember)
 * Resolve simultaneous OAuth2 authentication issue
   * Use Google, logout and the use GitHub
     * still logs in with google
