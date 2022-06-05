@@ -34,19 +34,17 @@ module.exports = (app: any) => {
       //  https://www.npmjs.com/package/express-flash-message  --->
       //  cookie secure: true, // becareful set this option, check here: https://www.npmjs.com/package/express-session#cookiesecure. 
       //    In local, if you set this to true, you won't receive flash as you are using `http` in local, but http is not secure
-      // FIXME: secure: true / false
       //      set to true for Mongo, set to false for express-flash-messages
       //      not sure we are even using Mongostore / sessions, now that jwt is implemented
-      //  also disabled 'sameSite' because it was interfering with expreess-flash-messages
+      //  also disabled 'sameSite' because it was also interfering with express-flash-messages
       cookie: { 
-        maxAge: 20 * 60, 
+        maxAge: process.env.COOKIE_MAX_AGE,  // time before cookie expires / mongo datastore removes session
         // secure: true, 
         // sameSite: 'none'
-      },  // 20 * 60; 20 minutes before cookie expires / mongo datastore removes session
-
+      }, 
       store: MongoStore.create({ 
         mongoUrl: process.env.MONGO_CONNECTION_STRING,
-        dbName: 'authSandbox',
+        dbName: process.env.AUTH_DATABASE_NAME,
         collectionName: 'sessions'
       }),
       crypto: {

@@ -18,7 +18,7 @@ body {
   height: calc(100%);
 }
 
-.dashboard-content {
+.app-surface-content {
   background-color: white;
   padding: 10px;
   margin-bottom: 20px;
@@ -28,10 +28,10 @@ body {
 
   border: 1px solid black;
 }
-.dashboard-content .logout {
+.app-surface-content .logout {
   text-align: center;
 }
-.dashboard-content .bold {
+.app-surface-content .bold {
   font-weight: 700;
   text-decoration: underline;
 }

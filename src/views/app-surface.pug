@@ -3,7 +3,7 @@
 doctype html
 html(lang="en")
   head
-    title Auth Sandbox Dashboard
+    title Auth Sandbox App Surface
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap')
@@ -13,11 +13,11 @@ html(lang="en")
   body
     #main
       form(action="/auth/logout" method="POST")
-        div.label Auth Sandbox Dashboard
+        div.label Auth Sandbox App Surface
           if message
             div.flash-message
               p= message
-        div.dashboard-content
+        div.app-surface-content
             p.bold response.user._id: 
             p= response.user._id
             p.bold response.user.accessLevel:

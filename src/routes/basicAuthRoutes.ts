@@ -24,11 +24,11 @@ module.exports = (app: any) => {
             try {
                 const user = await User.create({ username: req.body.username, password: req.body.password, source: 'basicLocal' })
         
-                //  After successful create, log user in. Log in redirects to dashboard
+                //  After successful create, log user in. Log in redirects to app-surface
                 req.login(user, function (err: Error) {
                     if (!err){
-                        // 307 lets us redirect to route below this one, as POST and not the default GET
-                        //      this logs new user in, and generates a JWT
+                        // 307 lets us redirect to the route in the codw below this one, as POST and not the default GET
+                        //      this logs new user in, generates a JWT and redirects to the app-surface enpoint
                         res.redirect(307, '/auth/basic/login/passport')
                     } else {
                         let message = req.flash('error', err)
@@ -68,7 +68,7 @@ module.exports = (app: any) => {
                     secure: true, 
                     maxAge: 5 * 60 * 1000 
                 })
-            res.redirect('/auth/dashboard')
+            res.redirect('/auth/app-surface')
         }
     )
 } // end module.exports

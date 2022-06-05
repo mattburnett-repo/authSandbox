@@ -42,7 +42,7 @@ module.exports = (app: any) => {
                     maxAge: 5 * 60 * 1000 
                 })           
             
-            res.redirect('/auth/dashboard')
+            res.redirect('/auth/app-surface')
         }
     )
 
@@ -67,6 +67,6 @@ module.exports = (app: any) => {
                     maxAge: 5 * 60 * 1000 
                 })           
                         
-            res.redirect('/auth/dashboard')
+            res.redirect('/auth/app-surface')
     })
 } // end module.exports

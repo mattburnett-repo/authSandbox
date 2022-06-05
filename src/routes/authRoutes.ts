@@ -27,17 +27,18 @@ module.exports = (app: any) => {
         res.render('register', { success, error} )
     })
 
-    // example protected route
-    router.get('/dashboard', 
+    // protected route
+    router.get('/app-surface', 
         passport.authenticate('jwtCookie', { 
             session: false,
             failureRedirect: '/',
             failureFlash: true 
         }),
         async (req: any, res: any) => {
-            res.render('dashboard', { 
+            // this is where your app begins. you can replace this code to plug in your app's entrypoint here.
+            res.render('app-surface', {    
                 response: {
-                    message: 'Build out some kind of flex / grid thing with boxes / access for each accessLevel', 
+                    message: 'This is where the application appears. This is the surface area of the application.', 
                     authToken: req.cookies.authToken, 
                     user: req.user
                 }})
@@ -46,7 +47,7 @@ module.exports = (app: any) => {
 
     // this is the main / only logout endpoint
     router.post('/logout', async (req: any, res: any) => {
-        // FIXME: logout() breaks flash messaging
+        // logout() breaks flash messaging
         //      set req.user / res.session.passport = null to approximate what logout() does
         //          without removing session stuff
 

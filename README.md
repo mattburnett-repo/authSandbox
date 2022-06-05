@@ -2,13 +2,15 @@
 # Auth Sandbox
 This is an isolated environment to facilitate experimentation with / further learning about authentication and authorization tech. The idea is to sort out a workflow / familiar practice for using this tech, in order speed up future development efforts.
 
-It is a simple Node / Express server that renders UI from PUG files. There is nothing fancy to look at, and this is on purpose.
+It is a simple Node / Express server that renders UI from PUG files. There is nothing fancy to look at; this is on purpose.
+
+The code handles logging in. Once a user has registered / logged in, the code presents a endpoint called 'app-surface'. 'app-surface' is intended to be the entry / starting point of your application's code.
 
 Users can register a new account.
 
 Users can log in in two different ways:
 * Basic Authentication (username / password)
-* OAuth
+* OAuth2
   * Google
   * GitHub
 
@@ -18,13 +20,12 @@ A MongoDB / Mongoose database is used to persist authentication / session info. 
 * Node / Express
   * bcrypt
   * Express flash messaging
-  
 * MongoDB / Mongoose / mongoose-find-or-create
 * Typescript
 * PUG
 * Passport JS
   * Basic authentication
-  * OAuth
+  * OAuth2
     * Google
     * GitHub
   * JWT
@@ -36,10 +37,11 @@ npm install
 ```
 You will need environment vars
 ```bash
-PORT=4000
+AUTH_PORT=4000
 SESSION_SECRET=put.your.session.secret.string.here
-MONGO_CONNECTION_STRING=put.your.mongo.connection.string.here (ie: mongodb://localhost:27017)
+MONGO_CONNECTION_STRING=put.your.mongo.connection.string.here (eg: mongodb://localhost:27017)
 AUTH_DATABASE_NAME=authSandbox
+COOKIE_MAX_AGE=in.total.milliseconds (eg: 1200000 = 20 mins.)
 
 GOOGLE_CLIENT_ID=get.this.from.console.cloud.google.com
 GOOGLE_CLIENT_SECRET=get.this.from.console.cloud.google.com
@@ -59,25 +61,34 @@ If you need to recompile static PUG files (src/views/static/login.pug, register.
 ```bash
 npm run build:pug
 ```
-Once everything is installed and running, go to your broswer and type
+Once everything is installed and running, go to your browser and type
 ```bash
 http://localhost:4000
 ```
 You should then see a Log In screen.
 
 ## Options
-* Basic (with and without Passport JS)
+* Basic Local
   * Username / Password 
-* OAuth 
+* OAuth2 
   * Google
   * GitHub
 * auth0
-  * ?
+  * still researching this
 * JWT
-  * For authorization / role / access privileges
+  * For authorization / role / access level
   
 ## To Do
+* Resolve simultaneous OAuth2 authentication puzzle
+  * Use Google, logout and the use GitHub
+    * still logs in with google
+* PUG
+  * modularize the duplicate bits of the templates
+    * I think they're called mixins, or something like that
+* Use MongoDB on Atlas, not locally
 * More Typescript
-* Implement auth0 / JWT functionality
-* Dockerize and deploy
+* Research / implement auth0
+* Dockerize / Deploy
+  * Microservice / AWS
+  * NPM package
 * Tests?
